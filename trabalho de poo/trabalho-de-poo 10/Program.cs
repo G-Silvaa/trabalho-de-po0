@@ -1,99 +1,75 @@
 ﻿using System;
-using Entities;
-using Validators;
 
-class Program
+namespace PolimorfismoExemplo
 {
-    static void Main(string[] args)
+    
+    public class Animal
     {
-        CadastroService cadastroService = new CadastroService();
-        CadastroValidator validator = new CadastroValidator();
-
-        try
+       
+        public virtual void EmitirSom()
         {
-            Console.WriteLine("Cadastro de Funcionário:");
-            Console.Write("Nome: ");
-            string? nomeFuncionario = Console.ReadLine();
-            if (nomeFuncionario != null) validator.ValidarNome(nomeFuncionario);
-            Console.Write("Matrícula: ");
-            string? matriculaFuncionario = Console.ReadLine();
-            Console.Write("CNPJ da Prestadora de Serviço: ");
-            string? cnpjPrestadora = Console.ReadLine();
-            Console.Write("Telefone: ");
-            string? telefoneFuncionario = Console.ReadLine();
-            if (telefoneFuncionario != null) validator.VerificarTelefone(telefoneFuncionario);
-            Console.Write("Email: ");
-            string? emailFuncionario = Console.ReadLine();
-            if (emailFuncionario != null) validator.VerificarEmail(emailFuncionario);
-
-            if (nomeFuncionario != null && matriculaFuncionario != null && cnpjPrestadora != null && telefoneFuncionario != null && emailFuncionario != null)
-            {
-                Funcionario funcionario = new Funcionario(nomeFuncionario, matriculaFuncionario, cnpjPrestadora, telefoneFuncionario, emailFuncionario);
-                cadastroService.AdicionarFuncionario(funcionario);
-
-                Console.WriteLine("\nCadastro de Cidadão:");
-                Console.Write("CPF: ");
-                string? cpfCidadao = Console.ReadLine();
-                if (cpfCidadao != null) validator.VerificarCPF(cpfCidadao);
-                Console.Write("Nome: ");
-                string? nomeCidadao = Console.ReadLine();
-                if (nomeCidadao != null) validator.ValidarNome(nomeCidadao);
-                Console.Write("Idade: ");
-                string? idadeCidadaoStr = Console.ReadLine();
-                int idadeCidadao = idadeCidadaoStr != null ? int.Parse(idadeCidadaoStr) : 0;
-                validator.VerificarIdade(idadeCidadao);
-                Console.Write("Vacinado (true/false): ");
-                string? vacinadoCidadaoStr = Console.ReadLine();
-                bool vacinadoCidadao = vacinadoCidadaoStr != null && bool.Parse(vacinadoCidadaoStr);
-                Console.Write("Telefone: ");
-                string? telefoneCidadao = Console.ReadLine();
-                if (telefoneCidadao != null) validator.VerificarTelefone(telefoneCidadao);
-                Console.Write("Email: ");
-                string? emailCidadao = Console.ReadLine();
-                if (emailCidadao != null) validator.VerificarEmail(emailCidadao);
-
-                if (cpfCidadao != null && nomeCidadao != null && telefoneCidadao != null && emailCidadao != null)
-                {
-                    Cidadao cidadao = new Cidadao(cpfCidadao, nomeCidadao, idadeCidadao, vacinadoCidadao, telefoneCidadao, emailCidadao);
-                    cadastroService.AdicionarCidadao(cidadao);
-                    funcionario.CadastrarCidadao(cidadao);
-
-                    Console.WriteLine("\nLogin de Cidadão:");
-                    Console.Write("CPF: ");
-                    string? cpfLogin = Console.ReadLine();
-
-                    if (cpfLogin != null)
-                    {
-                        bool loginSucesso = funcionario.LoginCidadao(cpfLogin);
-                        if (loginSucesso)
-                        {
-                            Console.WriteLine("Login bem-sucedido! Cidadão cadastrado.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Cidadão não cadastrado.");
-                        }
-                    }
-
-                    Console.WriteLine("\nAgendamento de Vacinação:");
-                    Console.Write("Data (yyyy-MM-dd): ");
-                    string? dataAgendamentoStr = Console.ReadLine();
-                    if (dataAgendamentoStr != null)
-                    {
-                        DateTime dataAgendamento = DateTime.Parse(dataAgendamentoStr);
-                        funcionario.AdicionarAgendamento(dataAgendamento);
-                        funcionario.AgendarVacinação(dataAgendamento);
-                    }
-
-                    Console.WriteLine("\nVacinação:");
-                    funcionario.Vacinar();
-                    cidadao.Vacinar();
-                }
-            }
+            Console.WriteLine("O animal faz um som.");
         }
-        catch (ArgumentException ex)
+    }
+
+    
+    public class Cachorro : Animal
+    {
+        
+        public override void EmitirSom()
         {
-            Console.WriteLine($"Erro na validação dos dados: {ex.Message}");
+            Console.WriteLine("O cachorro late.");
+        }
+    }
+
+   
+    public class Gato : Animal
+    {
+        
+        public override void EmitirSom()
+        {
+            Console.WriteLine("O gato mia.");
+        }
+    }
+
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            Animal meuCachorro = new Cachorro();
+            Animal meuGato = new Gato();
+
+            
+            FazerAnimalEmitirSom(meuCachorro);
+            FazerAnimalEmitirSom(meuGato);
+        }
+
+       
+        static void FazerAnimalEmitirSom(Animal animal)
+        {
+            animal.EmitirSom();
         }
     }
 }
+
+/*
+Explicação:
+
+- Classe Base `Animal`: Define um método virtual `EmitirSom` que pode ser sobrescrito pelas classes derivadas.
+- Classes Derivadas `Cachorro` e `Gato`: Sobrescrevem o método `EmitirSom` para fornecer implementações específicas.
+- Método `FazerAnimalEmitirSom`: Aceita um objeto do tipo `Animal` e chama o método `EmitirSom`. Graças ao polimorfismo, a implementação correta do método é chamada com base no tipo real do objeto (`Cachorro` ou `Gato`).
+
+Polimorfismo é um conceito fundamental da programação orientada a objetos que permite que objetos de diferentes classes sejam tratados como objetos de uma classe base comum. Ele permite que um único método ou função opere em diferentes tipos de objetos, proporcionando flexibilidade e reutilização de código.
+
+Situações em que o Polimorfismo é Útil:
+1. Reutilização de Código: Permite escrever código mais genérico e reutilizável.
+2. Flexibilidade: Facilita a extensão e manutenção do código, permitindo que novos tipos de objetos sejam introduzidos com pouca ou nenhuma modificação no código existente.
+3. Interoperabilidade: Permite que diferentes classes trabalhem juntas de maneira uniforme.
+
+Desvantagens do Polimorfismo:
+1. Complexidade: Pode aumentar a complexidade do código, tornando-o mais difícil de entender e manter.
+2. Performance: Pode introduzir uma pequena sobrecarga de desempenho devido à resolução dinâmica de métodos em tempo de execução.
+3. Erros de Tempo de Execução: Pode levar a erros que só são detectados em tempo de execução, como chamadas de métodos em objetos que não suportam esses métodos.
+*/
