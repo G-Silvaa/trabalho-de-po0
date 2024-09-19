@@ -1,5 +1,6 @@
 using System;
 using Validators;
+using Interfaces;
 
 namespace Entities
 {

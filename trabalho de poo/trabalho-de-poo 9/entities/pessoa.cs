@@ -1,9 +1,10 @@
 using System;
 using Validators;
+using Interfaces;
 
 namespace Entities
 {
-    public class Pessoa
+    public class Pessoa : IVacinacao
     {
         private string nome;
         private string telefone;
@@ -65,4 +66,5 @@ namespace Entities
             Console.WriteLine(Nome + " foi vacinado.");
         }
     }
+
 }

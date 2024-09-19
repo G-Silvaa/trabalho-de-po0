@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Validators;
+using Interfaces;
 
 namespace Entities
 {

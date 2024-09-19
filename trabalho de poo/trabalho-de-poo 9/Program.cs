@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities;
 using Validators;
+using Interfaces;
 
 class Program
 {
@@ -29,7 +30,7 @@ class Program
             if (nomeFuncionario != null && matriculaFuncionario != null && cnpjPrestadora != null && telefoneFuncionario != null && emailFuncionario != null)
             {
                 Funcionario funcionario = new Funcionario(nomeFuncionario, matriculaFuncionario, cnpjPrestadora, telefoneFuncionario, emailFuncionario);
-                cadastroService.AdicionarFuncionario(funcionario);
+                ((ICadastro<Funcionario>)cadastroService).Adicionar(funcionario);
 
                 Console.WriteLine("\nCadastro de Cidadão:");
                 Console.Write("CPF: ");
@@ -55,7 +56,7 @@ class Program
                 if (cpfCidadao != null && nomeCidadao != null && telefoneCidadao != null && emailCidadao != null)
                 {
                     Cidadao cidadao = new Cidadao(cpfCidadao, nomeCidadao, idadeCidadao, vacinadoCidadao, telefoneCidadao, emailCidadao);
-                    cadastroService.AdicionarCidadao(cidadao);
+                    ((ICadastro<Cidadao>)cadastroService).Adicionar(cidadao);
                     funcionario.CadastrarCidadao(cidadao);
 
                     Console.WriteLine("\nLogin de Cidadão:");

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GeniltonSIlva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 7\\trabalho-de-poo.csproj": {}
+    "C:\\Users\\Geniltonsilva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 9\\trabalho-de-poo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GeniltonSIlva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 7\\trabalho-de-poo.csproj": {
+    "C:\\Users\\Geniltonsilva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 9\\trabalho-de-poo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GeniltonSIlva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 7\\trabalho-de-poo.csproj",
+        "projectUniqueName": "C:\\Users\\Geniltonsilva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 9\\trabalho-de-poo.csproj",
         "projectName": "trabalho-de-poo",
-        "projectPath": "C:\\Users\\GeniltonSIlva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 7\\trabalho-de-poo.csproj",
-        "packagesPath": "C:\\Users\\GeniltonSIlva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GeniltonSIlva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 7\\obj\\",
+        "projectPath": "C:\\Users\\Geniltonsilva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 9\\trabalho-de-poo.csproj",
+        "packagesPath": "C:\\Users\\Geniltonsilva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Geniltonsilva\\trabalho-de-po0\\trabalho de poo\\trabalho-de-poo 9\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\GeniltonSIlva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Geniltonsilva\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
